@@ -1,0 +1,21 @@
+server:
+  port: 8081
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: graphql
+          uri: http://localhost:8080/graphql
+          predicates:
+            - Path=/library
+          filters:
+            - RewritePath=/library, /graphql
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1
+                redis-rate-limiter.burstCapacity: 1
+
+wavefront:
+  application:
+    name: graphql-library
+    service: bp-gateway
