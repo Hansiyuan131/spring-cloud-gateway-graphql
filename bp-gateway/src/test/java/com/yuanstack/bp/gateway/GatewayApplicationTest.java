@@ -1,4 +1,4 @@
-package com.yuanstack.graphql.bp.gateway;
+package com.yuanstack.bp.gateway;
 
 /**
  * @author hansiyuan
